@@ -4342,8 +4342,6 @@ footer .button-link img {
   left: 0;
   top: 0;
   z-index: 9999999;
-  --preloader-clip: 0;
-  clip-path: inset(0 0 0 var(--preloader-clip));
 }
 
 .preloader .site-name {
