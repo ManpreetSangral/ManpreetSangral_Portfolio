@@ -307,48 +307,53 @@
       });
     }
   };
-  var loader = function () {
-    var innerBars = document.querySelectorAll(".inner-bar");
-    var increment = 0;
-    function animateBars() {
-      for (var i = 0; i < 2; i++) {
-        var randomWidth = Math.floor(Math.random() * 101);
-        gsap.to(innerBars[i + increment], {
-          width: randomWidth + "%",
-          duration: 0.5,
-          ease: "none",
-        });
-      }
-      setTimeout(function () {
-        for (var i = 0; i < 2; i++) {
-          gsap.to(innerBars[i + increment], {
-            width: "100%",
-            duration: 0.5,
-            ease: "none",
-          });
+function loader() {
+
+    const bars = document.querySelectorAll(".inner-bar");
+
+    document.documentElement.classList.add("loading");
+    document.body.classList.add("loading");
+
+    let tl = gsap.timeline({
+        defaults:{
+            ease:"power2.out"
         }
-        increment += 2;
-        if (increment < innerBars.length) {
-          animateBars();
-        } else {
-          var preloaderTL = gsap.timeline();
-          preloaderTL.to(".preloader", {
-            "--preloader-clip": "100%",
-            duration: 0.4,
-            ease: "none",
-            delay: 0.8,
-          });
-          preloaderTL.set(".preloader", { display: "none" });
-        }
-      }, 200);
-    }
-    $(window).on("load", function () {
-      animateBars();
-      setTimeout(function () {
-        $(".preloader").remove();
-      }, 3000);
     });
-  };
+
+    bars.forEach((bar,index)=>{
+
+        tl.to(bar,{
+            width: gsap.utils.random(20,80) + "%",
+            duration:.25
+        });
+
+        tl.to(bar,{
+            width:"100%",
+            duration:.25
+        });
+
+    });
+
+    tl.to(".preloader",{
+        yPercent:-100,
+        duration:.9,
+        ease:"power4.inOut"
+    });
+
+    tl.set(".preloader",{
+        display:"none"
+    });
+
+    tl.call(function(){
+
+        document.documentElement.classList.remove("loading");
+        document.body.classList.remove("loading");
+
+    });
+
+}
+
+window.addEventListener("load",loader);
 
   $(function () {
     loader();

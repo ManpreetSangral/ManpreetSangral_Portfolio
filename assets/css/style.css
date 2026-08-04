@@ -4336,82 +4336,55 @@ footer .button-link img {
 }
 
 .preloader {
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  left: 0;
-  top: 0;
-  z-index: 9999999;
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    background: var(--Secondary);
+    overflow: hidden;
+    z-index: 999999999;
+
+    transform: translate3d(0,0,0);
+    will-change: transform;
+    backface-visibility: hidden;
 }
 
-.preloader .site-name {
-  background-color: var(--Secondary);
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+.preloader .site-name{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:var(--Secondary);
+    z-index:2;
 }
 
-.loader-percent {
-  margin-top: 20px;
-  font-size: 32px;
-  font-weight: 700;
-  color: var(--Primary);
+.preloader-gutters{
+    position:absolute;
+    inset:0;
+    display:flex;
+    z-index:3;
 }
 
-.preloader span {
-  font-size: 80px;
-  font-weight: 800;
-  color: #fff;
-  text-transform: uppercase;
+.preloader-gutters .bar{
+    flex:1;
+    position:relative;
 }
 
-.preloader .preloader-gutters {
-  background-color: transparent;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 2;
-  display: flex;
+.preloader-gutters .inner-bar{
+    position:absolute;
+    inset:0;
+    width:0%;
+    background:var(--Primary);
 }
 
-.preloader .preloader-gutters .bar {
-  width: 12.5%;
-  height: 100%;
-  background: transparent;
-  position: relative;
+html.loading,
+body.loading{
+    overflow:hidden;
+    height:100%;
+    touch-action:none;
 }
-
-.preloader .preloader-gutters .bar .inner-bar {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 0%;
-  height: 100%;
-  background-color: var(--Primary);
-}
-
-.preloader .preloader-overlay {
-  background-color: var(--White);
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 9999999;
-  transform: translateX(-100%);
-  opacity: 0.2;
-}
-
-
 
 /*------------ sections ---------------- */
 /* ---------------------------------------------------------
