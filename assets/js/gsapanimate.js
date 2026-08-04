@@ -355,7 +355,12 @@
         from: "center",
       },
     });
-
+    tl.to(
+      {},
+      {
+        duration: .5,
+      },
+    );
     tl.set(".preloader", {
       display: "none",
     });
