@@ -307,37 +307,49 @@
       });
     }
   };
+
   function loader() {
     const bars = gsap.utils.toArray(".inner-bar");
+
+    gsap.defaults({
+      force3D: true,
+    });
 
     document.documentElement.classList.add("loading");
     document.body.classList.add("loading");
 
-    let tl = gsap.timeline();
+    const tl = gsap.timeline({
+      defaults: {
+        ease: "power2.out",
+      },
+    });
 
-    // Random fill together
+    // Reset
+    gsap.set(bars, {
+      scaleX: 0,
+    });
+
+    // Random partial fill
     tl.to(bars, {
-      width: () => gsap.utils.random(20, 80) + "%",
-      duration: 0.25,
-      ease: "power1.out",
+      scaleX: () => gsap.utils.random(0.25, 0.8),
+      duration: 0.22,
       stagger: {
-        each: 0.03,
+        each: 0.02,
         from: "random",
       },
     });
 
-    // Full fill together
+    // Full fill
     tl.to(bars, {
-      width: "100%",
-      duration: 0.25,
-      ease: "power1.out",
+      scaleX: 1,
+      duration: 0.22,
       stagger: {
-        each: 0.03,
+        each: 0.02,
         from: "random",
       },
     });
 
-    // Small pause
+    // Pause
     tl.to(
       {},
       {
@@ -345,19 +357,27 @@
       },
     );
 
-    // Open flaps
+    // Flaps open
     tl.to(".bar", {
       yPercent: -100,
-      duration: 0.8,
+      duration: 0.75,
       ease: "power4.inOut",
       stagger: {
         each: 0.05,
         from: "center",
       },
+      force3D: true,
+    });
+
+    // Fade away
+    tl.to(".preloader", {
+      autoAlpha: 0,
+      duration: 0.15,
     });
 
     tl.set(".preloader", {
       display: "none",
+      clearProps: "all",
     });
 
     tl.call(() => {

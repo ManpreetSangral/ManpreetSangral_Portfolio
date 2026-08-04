@@ -4343,19 +4343,32 @@ footer .button-link img {
     height: 100dvh;
     background: var(--Secondary);
     overflow: hidden;
-    z-index: 99999999;
-}
-.preloader .site-name{
-    position:absolute;
-    inset:0;
-    display:flex;
-    flex-direction: column;
-    align-items:center;
-    justify-content:center;
-    background:var(--Secondary);
-    z-index:2;
+    z-index: 999999999;
+
+    transform: translateZ(0);
+    will-change: transform;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
 }
 
+.preloader .site-name {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--Secondary);
+    z-index: 2;
+}
+
+.preloader span {
+    font-size: clamp(38px, 6vw, 80px);
+    font-weight: 800;
+    color: #fff;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 0 20px;
+}
 
 .preloader-gutters {
     position: absolute;
@@ -4363,24 +4376,37 @@ footer .button-link img {
     display: flex;
     z-index: 3;
 }
+
 .preloader-gutters .bar {
     flex: 1;
-    overflow: hidden;
     position: relative;
+    overflow: hidden;
+
+    transform: translateZ(0);
     will-change: transform;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
 }
-.preloader-gutters .inner-bar{
+
+.preloader-gutters .inner-bar {
     position: absolute;
     inset: 0;
-    width: 0%;
+
     background: var(--Primary);
+
+    transform: scaleX(0);
+    transform-origin: left center;
+
+    will-change: transform;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
 }
 
 html.loading,
-body.loading{
-    overflow:hidden;
-    height:100%;
-    touch-action:none;
+body.loading {
+    overflow: hidden;
+    height: 100%;
+    touch-action: none;
 }
 
 /*------------ sections ---------------- */
