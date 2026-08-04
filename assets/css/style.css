@@ -1098,7 +1098,7 @@ a:hover {
 }
 
 .mb_48 {
-  margin-bottom: 48px;
+  margin-bottom: 40px;
 }
 
 .mb_55 {
@@ -3483,6 +3483,7 @@ form textarea {
   flex-shrink: 0;
   position: relative;
   z-index: 1;
+  line-height: 1.4;
 }
 
 .experience-item .content {
@@ -3791,6 +3792,7 @@ form textarea {
   padding: 28px 26px;
   transition: .4s;
   overflow: hidden;
+  height: 100%;
 }
 
 .tech-card::before {
@@ -4710,7 +4712,7 @@ footer .button-link img {
   font-size: clamp(87px, 5.2vw, 175.85px);
   line-height: clamp(98px, 8.3vw, 140px);
   color: var(--White);
-  margin-bottom: 35px;
+  margin-bottom: 22px;
 }
 
 .section-about-3 .heading-title .title img {
@@ -4721,10 +4723,6 @@ footer .button-link img {
 
 .section-about-3 .content .title {
   margin-bottom: 33px;
-}
-
-.section-about-3 .content .text {
-  margin-bottom: 55px;
 }
 
 .section-about-3 .desc {
@@ -5393,7 +5391,7 @@ footer .button-link img {
   .tech-card {
 
     padding: 18px;
-    height: -webkit-fill-available;
+    height:100%;
 
   }
 
@@ -5405,6 +5403,9 @@ footer .button-link img {
 
   .service-item.style-2 {
     padding: 18px 15px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 15px;
   }
 
   .work-item .content {
@@ -5713,7 +5714,7 @@ footer .button-link img {
     padding-left: 0;
   }
 
-  .tag-title {
+  .section-about-3 .tag-title {
     padding-left: 20px;
     margin-bottom: 24px;
   }
