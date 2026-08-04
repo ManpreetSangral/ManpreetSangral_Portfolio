@@ -4343,40 +4343,37 @@ footer .button-link img {
     height: 100dvh;
     background: var(--Secondary);
     overflow: hidden;
-    z-index: 999999999;
-
-    transform: translate3d(0,0,0);
-    will-change: transform;
-    backface-visibility: hidden;
+    z-index: 99999999;
 }
-
 .preloader .site-name{
     position:absolute;
     inset:0;
     display:flex;
+    flex-direction: column;
     align-items:center;
     justify-content:center;
     background:var(--Secondary);
     z-index:2;
 }
 
-.preloader-gutters{
-    position:absolute;
-    inset:0;
-    display:flex;
-    z-index:3;
-}
 
-.preloader-gutters .bar{
-    flex:1;
-    position:relative;
+.preloader-gutters {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    z-index: 3;
 }
-
+.preloader-gutters .bar {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+    will-change: transform;
+}
 .preloader-gutters .inner-bar{
-    position:absolute;
-    inset:0;
-    width:0%;
-    background:var(--Primary);
+    position: absolute;
+    inset: 0;
+    width: 0%;
+    background: var(--Primary);
 }
 
 html.loading,

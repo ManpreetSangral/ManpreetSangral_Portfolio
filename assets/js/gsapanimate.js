@@ -307,53 +307,66 @@
       });
     }
   };
-function loader() {
-
-    const bars = document.querySelectorAll(".inner-bar");
+  function loader() {
+    const bars = gsap.utils.toArray(".inner-bar");
 
     document.documentElement.classList.add("loading");
     document.body.classList.add("loading");
 
-    let tl = gsap.timeline({
-        defaults:{
-            ease:"power2.out"
-        }
+    let tl = gsap.timeline();
+
+    // Random fill together
+    tl.to(bars, {
+      width: () => gsap.utils.random(20, 80) + "%",
+      duration: 0.25,
+      ease: "power1.out",
+      stagger: {
+        each: 0.03,
+        from: "random",
+      },
     });
 
-    bars.forEach((bar,index)=>{
-
-        tl.to(bar,{
-            width: gsap.utils.random(20,80) + "%",
-            duration:.25
-        });
-
-        tl.to(bar,{
-            width:"100%",
-            duration:.25
-        });
-
+    // Full fill together
+    tl.to(bars, {
+      width: "100%",
+      duration: 0.25,
+      ease: "power1.out",
+      stagger: {
+        each: 0.03,
+        from: "random",
+      },
     });
 
-    tl.to(".preloader",{
-        yPercent:-100,
-        duration:.9,
-        ease:"power4.inOut"
+    // Small pause
+    tl.to(
+      {},
+      {
+        duration: 0.15,
+      },
+    );
+
+    // Open flaps
+    tl.to(".bar", {
+      yPercent: -100,
+      duration: 0.8,
+      ease: "power4.inOut",
+      stagger: {
+        each: 0.05,
+        from: "center",
+      },
     });
 
-    tl.set(".preloader",{
-        display:"none"
+    tl.set(".preloader", {
+      display: "none",
     });
 
-    tl.call(function(){
-
-        document.documentElement.classList.remove("loading");
-        document.body.classList.remove("loading");
-
+    tl.call(() => {
+      document.documentElement.classList.remove("loading");
+      document.body.classList.remove("loading");
     });
+  }
 
-}
-
-window.addEventListener("load",loader);
+  window.addEventListener("load", loader);
 
   $(function () {
     loader();
